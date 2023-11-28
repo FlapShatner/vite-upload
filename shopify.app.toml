@@ -2,7 +2,7 @@
 
 name = "vite-upload"
 client_id = "434128be1633997859b76fd851caca8e"
-application_url = "https://fundamentals-aluminum-drug-frozen.trycloudflare.com"
+application_url = "https://manufacturer-fibre-humanities-weekend.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://fundamentals-aluminum-drug-frozen.trycloudflare.com/auth/callback",
-  "https://fundamentals-aluminum-drug-frozen.trycloudflare.com/auth/shopify/callback",
-  "https://fundamentals-aluminum-drug-frozen.trycloudflare.com/api/auth/callback",
-  "https://fundamentals-aluminum-drug-frozen.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://manufacturer-fibre-humanities-weekend.trycloudflare.com/auth/callback",
+  "https://manufacturer-fibre-humanities-weekend.trycloudflare.com/auth/shopify/callback",
+  "https://manufacturer-fibre-humanities-weekend.trycloudflare.com/api/auth/callback",
+  "https://manufacturer-fibre-humanities-weekend.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

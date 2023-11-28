@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react'
-import DZStyle from './DZStyle'
+import DropzoneStyle from './DropzoneStyle'
 import { Image } from 'cloudinary-react'
 import { useDropzone } from 'react-dropzone'
 
@@ -48,16 +48,27 @@ const ImageUpload = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
   return (
-    <div>
-      <div {...getRootProps()}>
-        <DZStyle isDragActive={isDragActive}>
-          <input {...getInputProps()} />
-        </DZStyle>
-        {isDragActive ? <p>Drop the files here ...</p> : <p>Drag 'n' drop some files here, or click to select files</p>}
-      </div>
-      <div className='flex justify-center items-center mt-5 mx-3 max-w-xs'>{preview && <img src={preview} alt='preview' className='w-full' />}</div>
-      <button onClick={uploadImage}>Confirm Image</button>
-      <button onClick={handleResetClick}>Reset</button>
+    <div className='bg-bg-secondary pb-8 w-full '>
+      {!url && (
+        <div>
+          <div {...getRootProps()}>
+            <DropzoneStyle isDragActive={isDragActive}>
+              <input {...getInputProps()} />
+            </DropzoneStyle>
+          </div>
+          <div className='flex justify-center items-center mt-5 mb-5 mx-auto max-w-xs w-full '>
+            {preview && <img src={preview} alt='preview' className='w-full' />}
+          </div>
+          <div className='flex gap-4 justify-center'>
+            <button className='bg-white text-black p-4 ' onClick={uploadImage}>
+              Confirm Image
+            </button>
+            <button className='bg-btn-bg border border-border text-txt-primary p-4 ' onClick={handleResetClick}>
+              Reset
+            </button>
+          </div>
+        </div>
+      )}
       {loading ? (
         <div className='flex items-center justify-center gap-2'>
           <div className='border-t-transparent border-solid animate-spin rounded-full border-blue-400 border-4 h-6 w-6'></div>
@@ -65,7 +76,7 @@ const ImageUpload = () => {
         </div>
       ) : (
         url && (
-          <div className='pb-8 pt-4'>
+          <div className='pb-8 pt-4 m-auto w-full'>
             <Image cloudName={import.meta.env.VITE_CLOUDINARY_CLOUD_NAME} publicId={url} />
           </div>
         )

@@ -2,20 +2,33 @@ import React, { useState, useCallback } from 'react'
 import DropzoneStyle from './DropzoneStyle'
 import { Image } from 'cloudinary-react'
 import { useDropzone } from 'react-dropzone'
+import { getCart, getCustomItems, addImageToCart } from './utils'
 
 const ImageUpload = () => {
   const [image, setImage] = useState(null)
   const [url, setUrl] = useState('')
   const [loading, setLoading] = useState(false)
   const [preview, setPreview] = useState(null)
+  const [noImage, setNoImage] = useState(false)
 
   const uploadImage = async () => {
     setLoading(true)
+    if (!image) {
+      setLoading(false)
+      setNoImage(true)
+      setTimeout(() => {
+        setNoImage(false)
+      }, 3000)
+      return
+    }
     const data = new FormData()
     data.append('file', image)
     data.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET)
     data.append('cloud_name', import.meta.env.VITE_CLOUDINARY_CLOUD_NAME)
     data.append('folder', 'Cloudinary-React')
+
+    const customCartItem = await getCustomItems()
+    const itemKey = customCartItem[0].key
 
     try {
       const response = await fetch(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/upload`, {
@@ -23,8 +36,12 @@ const ImageUpload = () => {
         body: data,
       })
       const res = await response.json()
+      console.log(res)
       setUrl(res.public_id)
       setLoading(false)
+      // console.log(res.url, itemKey)
+      // console.log(customCartItem)
+      addImageToCart(res.url, itemKey)
     } catch (error) {
       setLoading(false)
     }
@@ -51,6 +68,7 @@ const ImageUpload = () => {
     <div className='bg-bg-secondary pb-8 w-full '>
       {!url && (
         <div>
+          <h2 className='text-txt-primary text-center text-2xl my-6 font-semibold'>Upload an image</h2>
           <div {...getRootProps()}>
             <DropzoneStyle isDragActive={isDragActive}>
               <input {...getInputProps()} />
@@ -69,10 +87,11 @@ const ImageUpload = () => {
           </div>
         </div>
       )}
+      {noImage && <p className='text-txt-primary text-center'>Please select an image</p>}
       {loading ? (
         <div className='flex items-center justify-center gap-2'>
           <div className='border-t-transparent border-solid animate-spin rounded-full border-blue-400 border-4 h-6 w-6'></div>
-          <span>Processing...</span>
+          <span className='text-txt-primary'>Processing...</span>
         </div>
       ) : (
         url && (

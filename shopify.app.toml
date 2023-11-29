@@ -2,7 +2,7 @@
 
 name = "vite-upload"
 client_id = "434128be1633997859b76fd851caca8e"
-application_url = "https://manufacturer-fibre-humanities-weekend.trycloudflare.com"
+application_url = "https://antenna-steps-maiden-praise.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://manufacturer-fibre-humanities-weekend.trycloudflare.com/auth/callback",
-  "https://manufacturer-fibre-humanities-weekend.trycloudflare.com/auth/shopify/callback",
-  "https://manufacturer-fibre-humanities-weekend.trycloudflare.com/api/auth/callback",
-  "https://manufacturer-fibre-humanities-weekend.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://antenna-steps-maiden-praise.trycloudflare.com/auth/callback",
+  "https://antenna-steps-maiden-praise.trycloudflare.com/auth/shopify/callback",
+  "https://antenna-steps-maiden-praise.trycloudflare.com/api/auth/callback",
+  "https://antenna-steps-maiden-praise.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

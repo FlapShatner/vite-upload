@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for vite-upload on 2023-11-29T14:53:17-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "vite-upload"
+primary_region = "dfw"
+
+[build]
+
+[env]
+  PORT = "8081"
+  HOST = "https://vite-upload.fly.dev"
+  SHOPIFY_API_KEY = "3947c525acc29c77d4b9c4307d5c4bcc"
+  SCOPES = "write_products"
+
+[http_service]
+  internal_port = 8081
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 1024

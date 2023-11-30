@@ -33,7 +33,12 @@ const ImageUpload = () => {
 
     const customCartItem = await getCustomItems()
 
-    const itemKey = customCartItem && customCartItem[0].key
+    let itemKey
+    if (!customCartItem.length) {
+      itemKey = customCartItem[0].key
+    } else {
+      itemKey = null
+    }
 
     try {
       const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/upload`, {

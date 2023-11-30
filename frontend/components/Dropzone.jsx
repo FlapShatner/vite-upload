@@ -3,6 +3,7 @@ import DropzoneStyle from './DropzoneStyle'
 import { Image } from 'cloudinary-react'
 import { useDropzone } from 'react-dropzone'
 import { getCart, getCustomItems, addImageToCart } from './utils'
+import { custom } from '@cloudinary/url-gen/qualifiers/region'
 
 const ImageUpload = () => {
   const [image, setImage] = useState(null)
@@ -10,6 +11,9 @@ const ImageUpload = () => {
   const [loading, setLoading] = useState(false)
   const [preview, setPreview] = useState(null)
   const [noImage, setNoImage] = useState(false)
+
+  const CLOUDINARY_UPLOAD_PRESET = 'jt3ld2no'
+  const CLOUDINARY_CLOUD_NAME = 'dkxssdk96'
 
   const uploadImage = async () => {
     setLoading(true)
@@ -23,15 +27,16 @@ const ImageUpload = () => {
     }
     const data = new FormData()
     data.append('file', image)
-    data.append('upload_preset', import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET)
-    data.append('cloud_name', import.meta.env.VITE_CLOUDINARY_CLOUD_NAME)
+    data.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+    data.append('cloud_name', CLOUDINARY_CLOUD_NAME)
     data.append('folder', 'Cloudinary-React')
 
     const customCartItem = await getCustomItems()
-    const itemKey = customCartItem[0].key
+
+    const itemKey = customCartItem && customCartItem[0].key
 
     try {
-      const response = await fetch(`https://api.cloudinary.com/v1_1/${import.meta.env.VITE_CLOUDINARY_CLOUD_NAME}/upload`, {
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/upload`, {
         method: 'POST',
         body: data,
       })
@@ -96,7 +101,7 @@ const ImageUpload = () => {
       ) : (
         url && (
           <div className='pb-8 pt-4 m-auto w-full'>
-            <Image cloudName={import.meta.env.VITE_CLOUDINARY_CLOUD_NAME} publicId={url} />
+            <Image cloudName={CLOUDINARY_CLOUD_NAME} publicId={url} />
           </div>
         )
       )}

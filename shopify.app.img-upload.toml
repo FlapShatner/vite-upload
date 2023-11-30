@@ -2,7 +2,7 @@
 
 name = "img-upload"
 client_id = "3947c525acc29c77d4b9c4307d5c4bcc"
-application_url = "https://recordings-slovak-folk-refuse.trycloudflare.com"
+application_url = "https://medieval-gba-dining-watershed.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://recordings-slovak-folk-refuse.trycloudflare.com/auth/callback",
-  "https://recordings-slovak-folk-refuse.trycloudflare.com/auth/shopify/callback",
-  "https://recordings-slovak-folk-refuse.trycloudflare.com/api/auth/callback",
-  "https://recordings-slovak-folk-refuse.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://medieval-gba-dining-watershed.trycloudflare.com/auth/callback",
+  "https://medieval-gba-dining-watershed.trycloudflare.com/auth/shopify/callback",
+  "https://medieval-gba-dining-watershed.trycloudflare.com/api/auth/callback",
+  "https://medieval-gba-dining-watershed.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

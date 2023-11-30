@@ -34,7 +34,7 @@ const ImageUpload = () => {
     const customCartItem = await getCustomItems()
 
     let itemKey
-    if (!customCartItem.length) {
+    if (customCartItem.length > 0) {
       itemKey = customCartItem[0].key
     } else {
       itemKey = null

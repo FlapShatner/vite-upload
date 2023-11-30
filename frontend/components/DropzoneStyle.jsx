@@ -7,15 +7,13 @@ function DropzoneStyle({ children, isDragActive }) {
         <div className='flex flex-col items-center justify-center w-full h-auto mb-6 bg-white sm:w-3/4   '>
           <form className='border border-dashed border-bg-secondary relative w-4/5 h-48  mt-8 mb-6 bg-img-bg rounded-lg shadow-inner'>
             {children}
-            <label for='file-upload' className='z-20 flex flex-col items-center justify-center w-full h-full cursor-pointer'>
+            <label htmlFor='file-upload' className='z-20 flex flex-col items-center justify-center w-full h-full cursor-pointer'>
               {!isDragActive && <p className='z-10 text-sm font-light text-center text-bg-secondary'>Drag 'n' drop an image file here</p>}
 
               <svg className='z-10 w-8 h-8 text-icon' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
                 <path d='M2 6a2 2 0 012-2h5l2 2h5a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6z'></path>
               </svg>
-              <p className='z-10 text-sm font-light text-center text-bg-secondary'>
-                {isDragActive ? <p>Drop the files here ...</p> : <p> or click to select image</p>}
-              </p>
+              <p className='z-10 text-sm font-light text-center text-bg-secondary'>{isDragActive ? 'Drop the files here ...' : 'or click to select image'}</p>
             </label>
           </form>
           <div className=' mb-6 text-center'>

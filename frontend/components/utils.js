@@ -25,7 +25,7 @@ export const getItems = async (cart) => {
 
 export const customItems = (items) => {
     const customItems = items.filter((item) => item.variantTitle === 'Image')
-    // console.log("customItems", customItems)
+    // console.log("customItems", customItems)   
     return customItems
 }
 
@@ -33,8 +33,12 @@ export const getCustomItems = async () => {
     const cart = await getCart()
     const items = await getItems(cart)
     const customArray = await customItems(items)
-    // console.log("customArray", customArray)
-    return customArray
+    if(customArray.length > 0) {
+        return customArray
+    } else {
+        return false
+    }
+   
 }
 
 export const addImageToCart = async (image, key) => {

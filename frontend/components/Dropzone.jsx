@@ -33,10 +33,7 @@ const ImageUpload = () => {
 
     const customCartItem = await getCustomItems()
 
-    console.log(customCartItem)
-
     const itemKey = customCartItem && customCartItem[0].key
-    console.log(itemKey)
 
     try {
       const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/upload`, {
@@ -47,9 +44,7 @@ const ImageUpload = () => {
       console.log(res)
       setUrl(res.public_id)
       setLoading(false)
-      // console.log(res.url, itemKey)
-      // console.log(customCartItem)
-      addImageToCart(res.url, itemKey)
+      if (itemKey) addImageToCart(res.url, itemKey)
     } catch (error) {
       setLoading(false)
     }

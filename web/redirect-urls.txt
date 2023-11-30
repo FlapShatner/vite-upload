@@ -1,0 +1,4 @@
+https://vite-upload-59a3abb96ff4.herokuapp.com/auth/callback
+https://vite-upload-59a3abb96ff4.herokuapp.com/auth/shopify/callback
+https://vite-upload-59a3abb96ff4.herokuapp.com/api/auth/callback
+https://vite-upload-59a3abb96ff4.herokuapp.com/.shopify/graphiql/auth/callback

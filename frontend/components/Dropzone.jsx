@@ -73,7 +73,7 @@ const ImageUpload = () => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
   return (
-    <div className='bg-bg-secondary pb-8 w-full '>
+    <div className='bg-bg-primary pb-8 w-full '>
       {!url && (
         <div>
           <h2 className='text-txt-primary text-center text-2xl my-6 font-semibold'>Upload an image</h2>
@@ -86,10 +86,10 @@ const ImageUpload = () => {
             {preview && <img src={preview} alt='preview' className='w-full' />}
           </div>
           <div className='flex gap-4 justify-center'>
-            <button className='bg-white text-black p-4 ' onClick={uploadImage}>
+            <button className='bg-white text-black px-4 py-2 ' onClick={uploadImage}>
               Confirm Image
             </button>
-            <button className='bg-btn-bg border border-border text-txt-primary p-4 ' onClick={handleResetClick}>
+            <button className='bg-btn-bg border border-border text-txt-primary px-4 py-2 ' onClick={handleResetClick}>
               Reset
             </button>
           </div>

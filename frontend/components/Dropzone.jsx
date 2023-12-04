@@ -4,7 +4,7 @@ import { Image } from 'cloudinary-react'
 import { useDropzone } from 'react-dropzone'
 import { addImageToCart } from './utils'
 
-const ImageUpload = ({ cancel, customVariantId }) => {
+const ImageUpload = ({ cancel, customVariantId, enabled }) => {
   const [image, setImage] = useState(null)
   const [url, setUrl] = useState('')
   const [loading, setLoading] = useState(false)
@@ -64,44 +64,42 @@ const ImageUpload = ({ cancel, customVariantId }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
   return (
-    <>
-      <div className='bg-bg-primary pb-8 w-full absolute top-52 '>
-        {!url && (
-          <div>
-            <h2 className='text-txt-primary text-center text-2xl my-6 font-semibold'>Upload an image</h2>
-            <div {...getRootProps()}>
-              <DropzoneStyle isDragActive={isDragActive}>
-                <input {...getInputProps()} />
-              </DropzoneStyle>
-            </div>
-            <div className='flex justify-center items-center mt-5 mb-5 mx-auto max-w-xs w-full '>
-              {preview && <img src={preview} alt='preview' className='w-full' />}
-            </div>
-            <div className='flex gap-4 justify-center'>
-              <button className='bg-white text-black px-4 py-2 ' onClick={uploadImage}>
-                Confirm Image
-              </button>
-              <button className='bg-btn-bg border border-border text-txt-primary px-4 py-2 ' onClick={handleResetClick}>
-                Cancel
-              </button>
-            </div>
+    <div className='bg-bg-primary pb-8 w-1/2 z-50 '>
+      {!url && (
+        <div>
+          <h2 className='text-txt-primary text-center text-2xl my-6 font-semibold'>Upload an image</h2>
+          <div {...getRootProps()}>
+            <DropzoneStyle isDragActive={isDragActive}>
+              <input {...getInputProps()} />
+            </DropzoneStyle>
           </div>
-        )}
-        {noImage && <p className='text-txt-primary text-center'>Please select an image</p>}
-        {loading ? (
-          <div className='flex items-center justify-center gap-2'>
-            <div className='border-t-transparent border-solid animate-spin rounded-full border-blue-400 border-4 h-6 w-6'></div>
-            <span className='text-txt-primary'>Processing...</span>
+          <div className='flex justify-center items-center mt-5 mb-5 mx-auto max-w-xs w-full '>
+            {preview && <img src={preview} alt='preview' className='w-full' />}
           </div>
-        ) : (
-          url && (
-            <div className='pb-8 pt-4 m-auto w-full'>
-              <Image cloudName={CLOUDINARY_CLOUD_NAME} publicId={url} />
-            </div>
-          )
-        )}
-      </div>
-    </>
+          <div className='flex gap-4 justify-center'>
+            <button className='bg-white text-black px-4 py-2 ' onClick={uploadImage}>
+              Confirm & Add To Cart
+            </button>
+            <button className='bg-btn-bg border border-border text-txt-primary px-4 py-2 ' onClick={handleResetClick}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
+      {noImage && <p className='text-txt-primary text-center'>Please select an image</p>}
+      {loading ? (
+        <div className='flex items-center justify-center gap-2'>
+          <div className='border-t-transparent border-solid animate-spin rounded-full border-blue-400 border-4 h-6 w-6'></div>
+          <span className='text-txt-primary'>Processing...</span>
+        </div>
+      ) : (
+        url && (
+          <div className='pb-8 pt-4 m-auto w-full'>
+            <Image cloudName={CLOUDINARY_CLOUD_NAME} publicId={url} />
+          </div>
+        )
+      )}
+    </div>
   )
 }
 

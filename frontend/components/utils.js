@@ -12,17 +12,10 @@ export const getCart = async () => {
 }
 
 export const getCurrentUrl = () => {
-    let url = window.location.href
-    document.body.addEventListener('click', ()=>{
-    requestAnimationFrame(()=>{
-      if(url!==location.href){
-        console.log('url changed');
-        url = location.href
-      }
-    });
-}, true);
+    const url = window.location.href
     return url
-}
+}    
+
 
 export const getSelectedVariant =() => {
     const url = getCurrentUrl()
@@ -31,11 +24,10 @@ export const getSelectedVariant =() => {
 }
 
 export const getCurrentProduct = async () => {
-    const url = getCurrentUrl()
+    const url = getCurrentUrl()    
     const productId = url.split('/products/')[1].split('?')[0]
-    const product = await fetch(window.Shopify.routes.root + 'products/' + productId + '.js')
+   const product = await fetch(window.Shopify.routes.root + 'products/' + productId + '.js')
     const productJson = await product.json()
-    // console.log("productJson", productJson)
     return productJson
 }
 
@@ -59,7 +51,7 @@ export const addImageToCart = async (image, key) => {
      "id": key,
         "quantity": 1,
         "properties": {
-            "image": image
+            "_image": image
         }
     }
     try {

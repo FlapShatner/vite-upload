@@ -2,7 +2,7 @@
 
 name = "img-upload"
 client_id = "3947c525acc29c77d4b9c4307d5c4bcc"
-application_url = "https://swift-borders-handling-revolutionary.trycloudflare.com"
+application_url = "https://oriented-wear-stage-integrating.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://swift-borders-handling-revolutionary.trycloudflare.com/auth/callback",
-  "https://swift-borders-handling-revolutionary.trycloudflare.com/auth/shopify/callback",
-  "https://swift-borders-handling-revolutionary.trycloudflare.com/api/auth/callback",
-  "https://swift-borders-handling-revolutionary.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://oriented-wear-stage-integrating.trycloudflare.com/auth/callback",
+  "https://oriented-wear-stage-integrating.trycloudflare.com/auth/shopify/callback",
+  "https://oriented-wear-stage-integrating.trycloudflare.com/api/auth/callback",
+  "https://oriented-wear-stage-integrating.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

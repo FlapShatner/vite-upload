@@ -15,7 +15,8 @@ export const theme = {
       "border": "#D2D2D2",
       "divider": "#EAEAEA",
       "img-bg": "#EEEEEE",
-      "icon": "#898989"
+      "icon": "#898989",
+      "backdrop": "#1a1a1a75"
     }
   },
 };

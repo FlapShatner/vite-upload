@@ -40,7 +40,7 @@ export default function App({ home }) {
 
   return (
     <div>
-      <div className='w-full bg-bg-primary flex gap-8 p-8'>
+      <div className='w-full bg-bg-primary flex flex-col sm:flex-row gap-8 p-8'>
         <ImageUpload setSelectedImage={setSelectedImage} url={url} setUrl={setUrl} />
         <Form
           size={size}

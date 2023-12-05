@@ -22,9 +22,9 @@ function Form({ addVariantToCart, size, setSize, quantity, setQuantity, enabled,
   const variants = product.variants
 
   return (
-    <div className='w-1/2 flex flex-col gap-8 bg-bg-primary text-txt-primary py-12'>
-      <h4 className='text-txt-primary'>Custom Decal</h4>
-      <span className='text-5xl font-black'>$11.11</span>
+    <div className='w-full sm:w-1/2 flex flex-col gap-8 bg-bg-primary text-txt-primary py-12'>
+      <h4 className='text-txt-primary text-center sm:text-start'>Custom Decal</h4>
+      <span className='text-5xl font-black text-center sm:text-start'>$11.11</span>
       <label htmlFor='size'>Size</label>
       <div className='flex flex-wrap gap-4'>
         {variants.map((variant) => (

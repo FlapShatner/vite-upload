@@ -63,7 +63,7 @@ const ImageUpload = ({ setSelectedImage, url, setUrl }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
   return (
-    <div className='bg-bg-primary pb-8 w-1/2 z-50 '>
+    <div className='bg-bg-primary pb-8 w-full sm:w-1/2 z-50 '>
       {!url && (
         <div>
           <h2 className='text-txt-primary text-center text-2xl my-6 font-semibold'>Upload an image</h2>
@@ -72,7 +72,7 @@ const ImageUpload = ({ setSelectedImage, url, setUrl }) => {
               <input {...getInputProps()} />
             </DropzoneStyle>
           </div>
-          <div className='flex justify-center items-center mt-5 mb-5 mx-auto max-w-xs w-full '>
+          <div className='flex justify-center items-center mt-5 mb-5 mx-auto md:max-w-xs w-full '>
             {preview && <img src={preview} alt='preview' className='w-full' />}
           </div>
           <div className='flex gap-4 justify-center'>

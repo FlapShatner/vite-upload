@@ -2,36 +2,47 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { getCurrentUrl, getCurrentProduct } from './utils'
 import VariantBadge from './VariantBadge'
+import Quantity from './Quantity'
 
 function Form() {
-  const [product, setProduct] = useState(null)
+ const [product, setProduct] = useState(null)
+ const [size, setSize] = useState('')
+ const [quantity, setQuantity] = useState(1)
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const currentProduct = await getCurrentProduct()
-      setProduct(currentProduct)
-    }
-    fetchProduct()
-  }, [])
+ useEffect(() => {
+  const fetchProduct = async () => {
+   const currentProduct = await getCurrentProduct()
+   setProduct(currentProduct)
+  }
+  fetchProduct()
+ }, [])
 
-  if (!product) return <h1>Loading...</h1>
+ console.log(product)
 
-  const variants = product.variants
+ if (!product) return <h1>Loading...</h1>
 
-  return (
-    <div>
-      <h4>Custom Decal</h4>
-      <span>$11.11</span>
-      <form>
-        <label htmlFor='size'>Size</label>
-        <div>
-          {variants.map((variant) => (
-            <VariantBadge variant={variant} key={variant.id} />
-          ))}
-        </div>
-      </form>
-    </div>
-  )
+ const variants = product.variants
+
+ return (
+  <div className='w-1/2 flex flex-col gap-8 bg-bg-primary text-txt-primary py-12'>
+   <h4 className='text-txt-primary'>Custom Decal</h4>
+   <span className='text-5xl font-black'>$11.11</span>
+   <label htmlFor='size'>Size</label>
+   <div className='flex flex-wrap gap-4'>
+    {variants.map((variant) => (
+     <VariantBadge
+      variant={variant}
+      size={size}
+      setSize={setSize}
+     />
+    ))}
+   </div>
+   <Quantity
+    quantity={quantity}
+    setQuantity={setQuantity}
+   />
+  </div>
+ )
 }
 
 export default Form

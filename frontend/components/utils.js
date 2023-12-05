@@ -60,7 +60,7 @@ export const addToCart = async (formData) => {
         // console.log("resultJson", resultJson)
         return resultJson
     }
-    catch {
+    catch {-
         console.log('error')
     }
 }

@@ -4,7 +4,7 @@ export const getCart = async () => {
     try {
       const cart = await fetch(window.Shopify.routes.root + 'cart.js')
       const cartJson = await cart.json()
-      console.log("cart", cartJson)
+    //   console.log("cart", cartJson)
       return cartJson
     } catch {
       console.log('error')
@@ -46,14 +46,8 @@ export const getCustomVariant = async () => {
 }
 }
 
-export const addImageToCart = async (image, key) => {
-    const formData = {
-     "id": key,
-        "quantity": 1,
-        "properties": {
-            "_image": image
-        }
-    }
+export const addToCart = async (formData) => {
+    
     try {
         const result = await fetch(window.Shopify.routes.root + 'cart/add.js', {
             method: 'POST',

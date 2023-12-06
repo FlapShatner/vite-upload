@@ -63,10 +63,10 @@ const ImageUpload = ({ setSelectedImage, url, setUrl }) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
   return (
-    <div className='bg-bg-primary pb-8 w-full sm:w-1/2  '>
+    <div className='bg-bg-primary pb-8 w-full sm:w-1/2 z-50 '>
       {!url && (
         <div>
-          <h2 className='text-txt-primary text-center text-2xl my-6'>Upload an image</h2>
+          <h2 className='text-txt-primary text-center text-2xl my-6 font-semibold'>Upload an image</h2>
           <div {...getRootProps()}>
             <DropzoneStyle isDragActive={isDragActive}>
               <input {...getInputProps()} />

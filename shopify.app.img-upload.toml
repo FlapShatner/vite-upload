@@ -2,7 +2,7 @@
 
 name = "img-upload"
 client_id = "3947c525acc29c77d4b9c4307d5c4bcc"
-application_url = "https://vessel-blake-rentals-freedom.trycloudflare.com"
+application_url = "https://horn-say-international-adventures.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://vessel-blake-rentals-freedom.trycloudflare.com/auth/callback",
-  "https://vessel-blake-rentals-freedom.trycloudflare.com/auth/shopify/callback",
-  "https://vessel-blake-rentals-freedom.trycloudflare.com/api/auth/callback",
-  "https://vessel-blake-rentals-freedom.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://horn-say-international-adventures.trycloudflare.com/auth/callback",
+  "https://horn-say-international-adventures.trycloudflare.com/auth/shopify/callback",
+  "https://horn-say-international-adventures.trycloudflare.com/api/auth/callback",
+  "https://horn-say-international-adventures.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

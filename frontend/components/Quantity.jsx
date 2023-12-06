@@ -12,21 +12,21 @@ function Quantity({ quantity, setQuantity }) {
   return (
     <div className='flex flex-col'>
       <label htmlFor='quantity'>Quantity</label>
-      <div className='flex'>
-        <button onClick={handleDecrement} className='px-6 border border-txt-secondary border-r-bg-primary'>
+      <div className='flex mt-2'>
+        <div onClick={handleDecrement} className='cursor-pointer px-4 border border-txt-secondary border-r-bg-primary flex items-center'>
           <QuantIcons name='minus' size='12' />
-        </button>
+        </div>
         <input
-          className='border border-txt-secondary bg-bg-primary text-txt-primary w-24 h-20 text-center'
+          className='border border-txt-secondary bg-bg-primary text-txt-primary w-10 h-10 min-h-4 text-center'
           value={quantity}
           readOnly
           id='quantity'
           name='quantity'
           min='1'
         />
-        <button onClick={handleIncrement} className='px-6 border border-txt-secondary border-l-bg-primary'>
+        <div onClick={handleIncrement} className='cursor-pointer px-4 border border-txt-secondary border-l-bg-primary flex items-center'>
           <QuantIcons name='plus' size='12' />
-        </button>
+        </div>
       </div>
     </div>
   )

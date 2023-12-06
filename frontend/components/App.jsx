@@ -1,47 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Form from './Form'
 import ImageUpload from './Dropzone'
-import { addToCart } from './utils'
+import { addToCart, getCart, uploadImage } from './utils'
 
 export default function App({ home }) {
   //  console.log('Home', home)
   const [size, setSize] = useState('') // size is a variant id
   const [quantity, setQuantity] = useState(1)
-  const [selectedImage, setSelectedImage] = useState(null)
   const [isSuccess, setIsSuccess] = useState(false)
-  const [url, setUrl] = useState('')
+  const [userImage, setUserImage] = useState(null)
+  const [imageUrl, setImageUrl] = useState(null)
+
+  const [cart, setCart] = useState(null)
 
   const formData = {
     id: size,
     quantity: quantity,
     properties: {
-      _image: selectedImage,
+      _image: imageUrl,
     },
-    sections: 'cart-items,cart-icon-bubble,cart-live-region-text,cart-footer,cart-drawer',
+    sections: 'ajax-cart',
   }
 
-  let enabled = selectedImage != null && size != ''
+  const cartCount = document.querySelector('.cart-count')
+
+  useEffect(() => {
+    const updateCount = async () => {
+      const cart = await getCart()
+      setCart(cart)
+      if (cartCount) {
+        cartCount.innerHTML = cart.item_count
+      }
+    }
+    updateCount()
+    console.log(cart)
+  }, [isSuccess])
+
+  let enabled = userImage != null && size != ''
   //   console.log('enabled', enabled)
 
   const addVariantToCart = async () => {
-    const res = await addToCart(formData)
-    if (res) {
-      //   console.log(res)
-      const cartDrawer = document.querySelector('cart-drawer')
-      cartDrawer.outerHTML = res.sections['cart-drawer']
-      //   console.log(cartDrawer)
-      const cartIcon = document.querySelector('#cart-icon-bubble')
-      cartIcon.innerHTML = res.sections['cart-icon-bubble']
-      setIsSuccess(true)
-      setSize('')
-      setUrl('')
+    const imgUrl = await uploadImage(userImage)
+    if (imgUrl) {
+      setImageUrl(imgUrl)
+      const res = await addToCart(formData)
+      if (res) {
+        console.log(res)
+        // const ajaxCart = document.querySelector('.minicart__content')
+        // ajaxCart.innerHTML = res.sections['ajax-cart']
+        setIsSuccess(true)
+        setSize('')
+      }
     }
   }
 
   return (
     <div>
       <div className='w-full bg-bg-primary flex flex-col sm:flex-row gap-8 p-8'>
-        <ImageUpload setSelectedImage={setSelectedImage} url={url} setUrl={setUrl} />
+        <ImageUpload setUserImage={setUserImage} />
         <Form
           size={size}
           setSize={setSize}

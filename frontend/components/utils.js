@@ -1,10 +1,19 @@
+import { async } from "react-cloudinary-upload-widget"
 
+
+export const formatPrice = (price, quantity) => {    
+  let result = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format((price * quantity) / 100)
+    return result
+}
 
 export const getCart = async () => {
     try {
       const cart = await fetch(window.Shopify.routes.root + 'cart.js')
       const cartJson = await cart.json()
-    //   console.log("cart", cartJson)
+      console.log("cart", cartJson)
       return cartJson
     } catch {
       console.log('error')
@@ -32,19 +41,6 @@ export const getCurrentProduct = async () => {
 }
 
 
-export const getCustomVariant = async () => {    
-    const product = await getCurrentProduct()
-    try {
-    const customVariant = product.variants.filter((variant) => variant.title === 'Image')   
-    if(customVariant.length > 0) {
-        return customVariant
-    } else {
-        return false
-    }
-} catch {
-    console.log('error')
-}
-}
 
 export const addToCart = async (formData) => {
     
@@ -63,6 +59,27 @@ export const addToCart = async (formData) => {
     catch {
         console.log('error')
     }
+}
+
+export const uploadImage = async (image) => {
+    const CLOUDINARY_UPLOAD_PRESET = 'jt3ld2no'
+    const CLOUDINARY_CLOUD_NAME = 'dkxssdk96'
+    const data = new FormData()
+     data.append('file', image)
+     data.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+     data.append('cloud_name', CLOUDINARY_CLOUD_NAME)
+     data.append('folder', 'Cloudinary-React')
+    try {
+      const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/upload`, {
+        method: 'POST',
+        body: data,
+      })
+      const res = await response.json()
+      return res.url
+    } catch (error) {
+      console.log(error)
+    }
+
 }
 
 

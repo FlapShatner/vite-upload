@@ -2,7 +2,7 @@
 
 name = "img-upload"
 client_id = "3947c525acc29c77d4b9c4307d5c4bcc"
-application_url = "https://fruit-less-hung-stan.trycloudflare.com"
+application_url = "https://pc-threads-innovation-civilian.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://fruit-less-hung-stan.trycloudflare.com/auth/callback",
-  "https://fruit-less-hung-stan.trycloudflare.com/auth/shopify/callback",
-  "https://fruit-less-hung-stan.trycloudflare.com/api/auth/callback",
-  "https://fruit-less-hung-stan.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://pc-threads-innovation-civilian.trycloudflare.com/auth/callback",
+  "https://pc-threads-innovation-civilian.trycloudflare.com/auth/shopify/callback",
+  "https://pc-threads-innovation-civilian.trycloudflare.com/api/auth/callback",
+  "https://pc-threads-innovation-civilian.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

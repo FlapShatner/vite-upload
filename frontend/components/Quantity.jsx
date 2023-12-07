@@ -6,6 +6,7 @@ function Quantity({ quantity, setQuantity }) {
     setQuantity(quantity + 1)
   }
   const handleDecrement = () => {
+    if (quantity === 1) return
     setQuantity(quantity - 1)
   }
 

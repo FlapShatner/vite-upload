@@ -26,7 +26,7 @@ function Form({ addVariantToCart, size, setSize, quantity, setQuantity, enabled,
 
   return (
     <div className='w-full sm:w-1/2 flex flex-col gap-8 bg-bg-primary text-txt-primary py-12'>
-      <h3 className='text-txt-primary text-center sm:text-start'>Custom Decal</h3>
+      <h3 className='text-txt-primary text-center sm:text-start text-4xl'>Custom Decal</h3>
       <span className='text-3xl font-black text-center sm:text-start'>{price}</span>
       <label htmlFor='size'>Size</label>
       <div className='flex flex-wrap gap-2'>

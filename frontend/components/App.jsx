@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Form from './Form'
 import ImageUpload from './Dropzone'
 import { addToCart, getCart, uploadImage } from './utils'
+import { TestButton } from './TestButton'
 
 export default function App({ home }) {
   //  console.log('Home', home)
@@ -85,6 +86,7 @@ export default function App({ home }) {
           error={error}
           setError={setError}
         />
+        <TestButton />
         <Form
           size={size}
           setSize={setSize}

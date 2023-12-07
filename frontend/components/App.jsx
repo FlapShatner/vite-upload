@@ -58,9 +58,8 @@ export default function App({ home }) {
       const res = await addToCart(formData)
       if (res) {
         console.log(res)
-        // const ajaxCart = document.querySelector('.minicart__content')
-        // ajaxCart.innerHTML = res.sections['ajax-cart']
-
+        const ajaxCart = document.querySelector('.minicart__content')
+        ajaxCart.innerHTML = res.sections['ajax-cart']
         setUserImage(null)
         setPreview(null)
         setLoading(false)

@@ -10,6 +10,9 @@ export default function App({ home }) {
   const [isSuccess, setIsSuccess] = useState(false)
   const [userImage, setUserImage] = useState(null)
   const [imageUrl, setImageUrl] = useState(null)
+  const [preview, setPreview] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   const [cart, setCart] = useState(null)
 
@@ -33,23 +36,40 @@ export default function App({ home }) {
       }
     }
     updateCount()
-    console.log(cart)
+    // console.log(cart)
   }, [isSuccess])
 
   let enabled = userImage != null && size != ''
   //   console.log('enabled', enabled)
 
   const addVariantToCart = async () => {
+    setLoading(true)
     const imgUrl = await uploadImage(userImage)
     if (imgUrl) {
+      if (imgUrl.error) {
+        setLoading(false)
+        setPreview(null)
+        setUserImage(null)
+        setError(imgUrl.error.message)
+        console.log(imgUrl.error.message)
+        return
+      }
       setImageUrl(imgUrl)
       const res = await addToCart(formData)
       if (res) {
         console.log(res)
         // const ajaxCart = document.querySelector('.minicart__content')
         // ajaxCart.innerHTML = res.sections['ajax-cart']
+
+        setUserImage(null)
+        setPreview(null)
+        setLoading(false)
         setIsSuccess(true)
+        setTimeout(() => {
+          setIsSuccess(false)
+        }, 3000)
         setSize('')
+        setImageUrl(null)
       }
     }
   }
@@ -57,7 +77,15 @@ export default function App({ home }) {
   return (
     <div>
       <div className='w-full bg-bg-primary flex flex-col sm:flex-row gap-8 p-8'>
-        <ImageUpload setUserImage={setUserImage} />
+        <ImageUpload
+          preview={preview}
+          setPreview={setPreview}
+          setUserImage={setUserImage}
+          loading={loading}
+          setLoading={setLoading}
+          error={error}
+          setError={setError}
+        />
         <Form
           size={size}
           setSize={setSize}
@@ -66,6 +94,7 @@ export default function App({ home }) {
           addVariantToCart={addVariantToCart}
           enabled={enabled}
           isSuccess={isSuccess}
+          loading={loading}
         />
       </div>
     </div>

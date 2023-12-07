@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react'
 import { getCurrentUrl, getCurrentProduct, formatPrice } from './utils'
 import VariantBadge from './VariantBadge'
 import Quantity from './Quantity'
+import Spinner from './Spinner'
 
-function Form({ addVariantToCart, size, setSize, quantity, setQuantity, enabled, isSuccess }) {
+function Form({ addVariantToCart, size, setSize, quantity, setQuantity, enabled, isSuccess, loading }) {
   const [product, setProduct] = useState(null)
   const [productPrice, setProductPrice] = useState('')
 
@@ -16,8 +17,6 @@ function Form({ addVariantToCart, size, setSize, quantity, setQuantity, enabled,
     }
     fetchProduct()
   }, [])
-
-  //   console.log(product)
 
   if (!product) return <h1>Loading...</h1>
 
@@ -36,9 +35,9 @@ function Form({ addVariantToCart, size, setSize, quantity, setQuantity, enabled,
         ))}
       </div>
       <Quantity quantity={quantity} setQuantity={setQuantity} />
-      {isSuccess && <p className='text-txt-primary text-4xl'>Item added to cart</p>}
+      {isSuccess && <p className='text-accent text-4xl'>Item added to cart</p>}
       <button className={`bg-white text-black p-4 ${!enabled && 'opacity-30 cursor-default'}`} onClick={addVariantToCart}>
-        Add To Cart
+        {loading ? 'Adding To Cart...' : 'Add To Cart'}
       </button>
     </div>
   )

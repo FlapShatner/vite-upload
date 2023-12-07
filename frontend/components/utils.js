@@ -1,4 +1,3 @@
-import { async } from "react-cloudinary-upload-widget"
 
 
 export const formatPrice = (price, quantity) => {    
@@ -13,7 +12,7 @@ export const getCart = async () => {
     try {
       const cart = await fetch(window.Shopify.routes.root + 'cart.js')
       const cartJson = await cart.json()
-      console.log("cart", cartJson)
+      // console.log("cart", cartJson)
       return cartJson
     } catch {
       console.log('error')
@@ -75,11 +74,11 @@ export const uploadImage = async (image) => {
         body: data,
       })
       const res = await response.json()
+      if(res.error) throw new Error(res.error.message)
       return res.url
     } catch (error) {
-      console.log(error)
+      // console.log(error)
+      return { error: error }   
     }
 
-}
-
-
+  }

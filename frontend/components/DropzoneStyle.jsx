@@ -17,7 +17,7 @@ function DropzoneStyle({ children, isDragActive }) {
           </form>
           <div className=' mb-6 text-center'>
             <p className='text-xs text-bg-primary'></p>
-            <p className='text-xs text-txt-primary'>File must be .jpg, .png, .svg, .bmp, .tiff, or .webp</p>
+            <p className='text-xs text-txt-primary'>File must be .jpg, .png, .bmp, .tiff, or .webp</p>
           </div>
         </div>
       </div>

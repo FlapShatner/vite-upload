@@ -46,6 +46,12 @@ app.get("/api/products/count", async (_req, res) => {
   res.status(200).send(countData);
 });
 
+app.get("/api/test", async (_req, res) => {
+  console.log("received request")
+  res.status(200).send("Hello World!");
+}
+)
+
 app.get("/api/products/create", async (_req, res) => {
   let status = 200;
   let error = null;

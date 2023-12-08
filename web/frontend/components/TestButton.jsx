@@ -4,7 +4,7 @@ export function TestButton() {
 
   const handleClick = async () => {
     console.log('test')
-    const res = await fetch('/a/test/api/products/countcart.js', {
+    const res = await fetch('/a/test/test', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
